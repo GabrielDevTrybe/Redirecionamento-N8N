@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Iniciando atendimento...</title>
+  <script>
+    async function iniciarAtendimento() {
+      const params = new URLSearchParams(window.location.search);
+      const numero = params.get('numero');
+      const nome = params.get('nome');
+
+      if (!numero || !nome) {
+        document.body.innerText = "Parâmetros inválidos.";
+        return;
+      }
+
+      try {
+        await fetch("https://tigoiasforte.app.n8n.cloud/webhook/botMessage", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            numero: numero,
+            nome: nome,
+            origem: "github"
+          })
+        });
+
+        document.body.innerText = "Atendimento iniciado com sucesso!";
+      } catch (error) {
+        console.error("Erro ao iniciar atendimento:", error);
+        document.body.innerText = "Erro ao iniciar atendimento.";
+      }
+    }
+
+    window.onload = iniciarAtendimento;
+  </script>
+</head>
+<body>
+  <p>Iniciando atendimento, aguarde...</p>
+</body>
+</html>
