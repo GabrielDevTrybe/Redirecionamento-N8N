@@ -10,10 +10,23 @@
 <body>
   <div class="overlay">
     <div class="mensagem">
-      <h1>Percebi que clicou no link!!!! 😂😂😂👏👏👏</h1>
+      <h1>Percebi que você clicou no link, <span id="nome-cliente">amigo</span>! 😂😂😂👏👏👏</h1>
       <p>Em breve um de nossos consultores entrará em contato com você.</p>
       <p>Obrigado pelo interesse e confiança.</p>
     </div>
   </div>
+
+  <script>
+    // Pega os parâmetros da URL
+    const params = new URLSearchParams(window.location.search);
+    const nomeCompleto = params.get('nome');
+
+    if (nomeCompleto) {
+      // Extrai o primeiro nome e capitaliza a primeira letra
+      const primeiroNome = nomeCompleto.trim().split(' ')[0];
+      const nomeFormatado = primeiroNome.charAt(0).toUpperCase() + primeiroNome.slice(1).toLowerCase();
+      document.getElementById('nome-cliente').textContent = nomeFormatado;
+    }
+  </script>
 </body>
 </html>
