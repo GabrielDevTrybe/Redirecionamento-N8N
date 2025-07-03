@@ -10,7 +10,8 @@
 <body>
   <div class="overlay">
     <div class="mensagem">
-      <h1>Percebi que você clicou no link, <span id="nome-cliente">amigo</span>! 😂😂😂👏👏👏</h1>
+      <h1>A corretora <span id="nome-corretor">corretor</span> agradece pela confiança!</h1>
+      <h2>Percebi que você clicou no link, <span id="nome-cliente">amigo</span>! 😂😂😂👏👏👏</h2>
       <p>Em breve um de nossos consultores entrará em contato com você.</p>
       <p>Obrigado pelo interesse e confiança.</p>
     </div>
@@ -20,12 +21,17 @@
     // Pega os parâmetros da URL
     const params = new URLSearchParams(window.location.search);
     const nomeCompleto = params.get('nome');
+    const nomeCorretor = params.get('corretor');
 
     if (nomeCompleto) {
       // Extrai o primeiro nome e capitaliza a primeira letra
       const primeiroNome = nomeCompleto.trim().split(' ')[0];
       const nomeFormatado = primeiroNome.charAt(0).toUpperCase() + primeiroNome.slice(1).toLowerCase();
       document.getElementById('nome-cliente').textContent = nomeFormatado;
+    }
+      if (nomeCorretor) {
+      // Extrai o primeiro nome e capitaliza a primeira letra
+      document.getElementById('nome-corretor').textContent = nomeCorretor;
     }
   </script>
 </body>
