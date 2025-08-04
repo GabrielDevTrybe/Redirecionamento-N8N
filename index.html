@@ -11,9 +11,9 @@
   <div class="overlay">
     <div class="mensagem">
     <!-- <img class="logo" src="https://i.postimg.cc/258sN1pj/Logo-Goi-s-Forte-BRANCA-Completa.png" alt=""> -->
-    <h1>Agradecemos pela confiança!</h1>
+    <h1> Somos a corretora <span id="nome-corretora">corretora</span> Agradecemos pela confiança!</h1>
     <p>Em breve um de nossos consultores entrará em contato com você.</p>
-  </div>
+    <p>Grato, do corretor <span id="nome-corretor">corretor</span> agradece pela confiança!</p>  </div>
 </div>
 
 
@@ -22,6 +22,7 @@
     const params = new URLSearchParams(window.location.search);
     const nomeCompleto = params.get('nome');
     const nomeCorretor = params.get('corretor');
+    const nomeCorretora = params.get('corretora');
 
     if (nomeCompleto) {
       // Extrai o primeiro nome e capitaliza a primeira letra
@@ -31,9 +32,15 @@
     }
       if (nomeCorretor) {
       // Extrai o primeiro nome e capitaliza a primeira letra
-      // const primeiroNomeCorretor = nomeCorretor.trim().split(' ')[0];
-      // const nomeFormatadoCorretor = primeiroNomeCorretor.charAt(0).toUpperCase() + primeiroNomeCorretor.slice(1).toLowerCase();
+      const primeiroNomeCorretor = nomeCorretor.trim().split(' ')[0];
+      const nomeFormatadoCorretor = primeiroNomeCorretor.charAt(0).toUpperCase() + primeiroNomeCorretor.slice(1).toLowerCase();
       document.getElementById('nome-corretor').textContent = nomeCorretor;
+    }
+       if (nomeCorretora) {
+      // Extrai o primeiro nome e capitaliza a primeira letra
+      const primeiroNomeCorretora = nomeCorretora.trim().split(' ')[0];
+      const nomeFormatadoCorretora = primeiroNomeCorretor.charAt(0).toUpperCase() + primeiroNomeCorretor.slice(1).toLowerCase();
+      document.getElementById('nome-corretora').textContent = nomeCorretor;
     }
   </script>
 </body>
